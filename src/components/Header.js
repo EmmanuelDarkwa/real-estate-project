@@ -9,15 +9,11 @@ const Header = () => {
   const state = useSelector((state) => {
     return state.userReducer;
   });
-  const Sh = () => {
-    console.log(state)
-  }
   return <header className='py-6 mb-12 border-b'>
     <div className='container mx-auto flex justify-between items-center'>
       <Link to='/'>
         <img src={Logo} alt='' />
       </Link>
-      <button onClick={Sh}>fjfhjfhjfh</button>
       <div className='flex items-center gap-6'>
         <HeaderAuth />
       </div>
