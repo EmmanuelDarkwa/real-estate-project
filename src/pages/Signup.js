@@ -56,18 +56,19 @@ const Signup = () => {
     };
 
     return (
-        <div className="holder">
-            <h3>REGISTRATION</h3>
-            <form className='form' onSubmit={signUpp}>
-                <div className="input-container">
+        <div className="flex justify-center items-center h-full bg-gray-800">
+            
+            <form className="max-w-[400px] w-full mx-auto bg-white p-8 mt-2 mb-2" onSubmit={signUpp}>
+            <h3 className='text-4xl font-bold text-center py-4 text-violet-500'>REGISTRATION</h3>
+                <div className="flex flex-col mb-4">
                     <label>First Name </label>
-                    <input type="text" value={fname} name="fname" onChange={(e) => setFname(e.target.value)} className='enter' required />
+                    <input type="text" value={fname} name="fname" onChange={(e) => setFname(e.target.value)} className='border relative bg-gray-100 p-2' required />
                 </div>
-                <div className="input-container">
+                <div className="flex flex-col mb-4">
                     <label>Last Name </label>
-                    <input type="text" value={lname} name="fname" onChange={(e) => setLname(e.target.value)} className='enter' required />
+                    <input type="text" value={lname} name="fname" onChange={(e) => setLname(e.target.value)} className='border relative bg-gray-100 p-2' required />
                 </div>
-                <div className="input-container">
+                <div className="flex flex-col mb-4">
                     <label >User Type:</label>
                     <select onChange={(e) => setUserinfo(e.target.value)} value={userinfo} required>
                         <option value="" disabled defaultValue >What type of user are you?</option>
@@ -75,18 +76,16 @@ const Signup = () => {
                         <option value="owner">Owner</option>
                     </select>
                 </div>
-                <div className="input-container">
+                <div className="flex flex-col mb-4">
                     <label>Email </label>
-                    <input type="email" value={email} name="email" onChange={(e) => setEmail(e.target.value)} className='enter' required />
+                    <input type="email" value={email} name="email" onChange={(e) => setEmail(e.target.value)} className='border relative bg-gray-100 p-2' required />
                 </div>
-                <div className="input-container">
+                <div className="flex flex-col mb-4">
                     <label>Password {newInfo.fname} </label>
-                    <input type="password" value={password} name="pass" onChange={(e) => setPassword(e.target.value)} className='enter' required />
+                    <input type="password" value={password} name="pass" onChange={(e) => setPassword(e.target.value)} className='border relative bg-gray-100 p-2' required />
                 </div>
-                <p>Have an account? <Link className='hover:text-violet-900 transtion' to="/login">Sign In</Link></p>
-                <div className="button-container">
-                    <input type="submit" value="SIGN UP" />
-                </div>
+                <p className='text-sm pt-2'>Have an account? <Link className='hover:text-violet-900 transtion' to="/login">Sign In</Link></p>
+                <button className="w-full py-3 mt-8 bg-violet-600 hover:bg-violet-500 relative text-white">Sign Up</button>
 
 
             </form>
