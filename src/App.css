@@ -1,0 +1,9 @@
+input.remove[type="number"]::-webkit-inner-spin-button,
+input.remove[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+input.remove::placeholder {
+  color: black;
+}
