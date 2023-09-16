@@ -4,6 +4,7 @@ import { db } from "../firebase/firebase";
 
 const initialState = {
   userInfo: {},
+  allPosts: [],
   loginId: "",
   propertyData: {
     propertyInfo: {
@@ -41,13 +42,10 @@ const usersSlice = createSlice({
       };
     },
     submitPost: (state) => {
-      console.log("Moved");
       const data = state.propertyData;
       const dbRef = collection(db, "allPosts");
       addDoc(dbRef, data)
-        .then((docRef) => {
-          console.log("Document has been added successfully");
-        })
+        .then((docRef) => {})
         .catch((error) => {
           console.log(error);
         });
@@ -66,6 +64,9 @@ const usersSlice = createSlice({
       state.propertyData.userId = userId;
       state.propertyData.postId = postId;
       state.propertyData.dateUploaded = dateUploaded;
+    },
+    updateAllPosts: (state, action) => {
+      state.allPosts = action.payload;
     },
     resetState: (state) => {
       state.userInfo = {};
@@ -87,6 +88,25 @@ const usersSlice = createSlice({
         dateUploaded: null,
       };
     },
+    resetPropertyPost: (state) => {
+      state.propertyData = {
+        propertyInfo: {
+          protype: "",
+          proloc: "",
+          address: "",
+          price: 0,
+          probath: 0,
+          proroom: 0,
+          sarea: 0,
+          proabout: "",
+        },
+        propertyPictures: [],
+        userId: "",
+        postId: "",
+        dateUploaded: null,
+      };
+      console.log("erased");
+    },
   },
 });
 
@@ -99,5 +119,7 @@ export const {
   updatePropertyPictures,
   updateOtherFields,
   resetState,
+  updateAllPosts,
+  resetPropertyPost,
 } = usersSlice.actions;
 export default usersSlice.reducer;

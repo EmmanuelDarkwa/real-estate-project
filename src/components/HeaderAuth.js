@@ -3,8 +3,13 @@ import { Link } from "react-router-dom";
 import { auth, db } from "../firebase/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { resetState, setUserInfo, updateLoginId } from "../slice/usersSlice";
-import { doc, getDoc } from "firebase/firestore";
+import {
+  resetState,
+  setUserInfo,
+  updateAllPosts,
+  updateLoginId,
+} from "../slice/usersSlice";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { BiUserCircle } from "react-icons/bi";
 
 const HeaderAuth = () => {
@@ -33,6 +38,20 @@ const HeaderAuth = () => {
       listenAuth();
     };
   }, []);
+  const fetchPost = async () => {
+    await getDocs(collection(db, "allPosts")).then((querySnapshot) => {
+      const newData = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      dispatch(updateAllPosts(newData));
+    });
+  };
+  useEffect(() => {
+    fetchPost();
+  }, []);
+
+  useEffect(() => {}, []);
 
   const userSignout = () => {
     signOut(auth)

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Image from "../assets/img/house-banner.png";
@@ -8,6 +8,14 @@ const Banner = () => {
   const state = useSelector((state) => {
     return state.userReducer;
   });
+  const [showButton, setShowButton] = useState(false);
+  useEffect(() => {
+    if (state.userInfo.userinfo === "owner") {
+      setShowButton(true);
+    } else {
+      setShowButton(false);
+    }
+  }, [state.userInfo.userinfo]);
 
   return (
     <section className="h-full max-h-[640px] mb-8 xl:mb-24">
@@ -24,18 +32,13 @@ const Banner = () => {
             The shortest distance between paradise and a place you call home.
             Change begins at home.
           </p>
-          {state.userInfo.userinfo === "owner" && ( // Conditionally render the button
+          {showButton && (
             <Link
               className="bg-blue-700 hover:bg-blue-900 text-white px-4 py-3 rounded-lg transition"
               to="/post1">
               Upload a Property
             </Link>
           )}
-          {/* <Link
-            className="bg-blue-700 hover:bg-blue-900 text-white px-4 py-3 rounded-lg transition"
-            to="/post1">
-            Upload a Property
-          </Link> */}
         </div>
         <div className="hidden flex-1 lg:flex justify-end items-end">
           <img src={Image} alt="" />

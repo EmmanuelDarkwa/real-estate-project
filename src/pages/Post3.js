@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
 import UploadPropertyImage from "../components/UploadPropertyImage";
 import img1 from "../images/home1.png";
-import { submitPost, updateOtherFields } from "../slice/usersSlice";
+import {
+  resetPropertyPost,
+  submitPost,
+  updateOtherFields,
+} from "../slice/usersSlice";
 import { useSelector } from "react-redux";
 
 const Post3 = () => {
@@ -29,7 +33,8 @@ const Post3 = () => {
     };
     dispatch(updateOtherFields(updatedFields));
     dispatch(submitPost());
-    // navigate("/");
+    navigate("/");
+    dispatch(resetPropertyPost());
   };
   return (
     <div className="flex justify-center items-center mb-5 ">
