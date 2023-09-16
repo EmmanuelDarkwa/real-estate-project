@@ -10,6 +10,7 @@ import Post1 from './pages/Post1';
 import Post2 from './pages/Post2';
 import "./App.css";
 import Forgotten from './pages/Forgotten';
+import Post3 from './pages/Post3';
 
 
 
@@ -24,6 +25,7 @@ const App = () => {
         <Route path='/signup' element={<Signup />} />
         <Route path='/post1' element={<Post1 />} />
         <Route path='/post2' element={<Post2 />} />
+        <Route path='/post3' element={<Post3 />} />
         <Route path='/forgot-password' element={<Forgotten />} />
       </Routes>
       <Footer />
