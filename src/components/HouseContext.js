@@ -1,47 +1,45 @@
-import React, { useEffect, useState, createContext } from 'react';
-import { housesData } from '../data';
+import React, { useEffect, useState, createContext } from "react";
+import { housesData } from "../data";
 
-
-export const HouseContext = createContext()
+export const HouseContext = createContext();
 const HouseContextProvider = ({ children }) => {
   const [houses, setHouses] = useState(housesData);
-  const [country, setCountry] = useState('Location (any)');
+  const [country, setCountry] = useState("Location (any)");
 
   const [countries, setCountries] = useState([]);
-  const [property, setProperty] = useState('Property type (any)')
+  const [property, setProperty] = useState("Property type (any)");
 
-  const [properties, setProperties] = useState([])
-  const [price, setPrice] = useState('Price range (any)');
+  const [properties, setProperties] = useState([]);
+  const [price, setPrice] = useState("Price range (any)");
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const allCountries = houses.map((house) => {
       return house.country;
     });
-    const uniqueCountries = ['Location (any)', ...new Set(allCountries)]
-    setCountries(uniqueCountries)
+    const uniqueCountries = ["Location (any)", ...new Set(allCountries)];
+    setCountries(uniqueCountries);
   }, []);
 
   useEffect(() => {
     const allProperties = houses.map((house) => {
       return house.type;
     });
-    const uniqueProperties = ['Location (any)', ...new Set(allProperties)]
-    setProperties(uniqueProperties)
+    const uniqueProperties = ["Location (any)", ...new Set(allProperties)];
+    setProperties(uniqueProperties);
   }, []);
 
   const handleClick = () => {
     //set is loading
     setLoading(true);
 
-
     const isDefault = (str) => {
-      return str.split(' ').includes('(any)');
+      return str.split(" ").includes("(any)");
     };
-    const minPrice = parseInt(price.split(' ')[0]);
+    const minPrice = parseInt(price.split(" ")[0]);
 
-    const maxPrice = parseInt(price.split(' ')[2]);
+    const maxPrice = parseInt(price.split(" ")[2]);
 
     const newHouses = housesData.filter((house) => {
       const housePrice = parseInt(house.price);
@@ -100,31 +98,31 @@ const HouseContextProvider = ({ children }) => {
 
     setTimeout(() => {
       return (
-        newHouses.length < 1 ? setHouses([]) :
-          setHouses(newHouses),
+        newHouses.length < 1 ? setHouses([]) : setHouses(newHouses),
         setLoading(false)
       );
-    }, 1000)
+    }, 1000);
   };
 
-
-
-  return <HouseContext.Provider value={{
-    country,
-    setCountry,
-    countries,
-    property,
-    setProperty,
-    properties,
-    price,
-    setPrice,
-    houses,
-    loading,
-    handleClick,
-    loading,
-  }}>
-    {children}
-  </HouseContext.Provider>;
+  return (
+    <HouseContext.Provider
+      value={{
+        country,
+        setCountry,
+        countries,
+        property,
+        setProperty,
+        properties,
+        price,
+        setPrice,
+        houses,
+        loading,
+        handleClick,
+        loading,
+      }}>
+      {children}
+    </HouseContext.Provider>
+  );
 };
 
 export default HouseContextProvider;
