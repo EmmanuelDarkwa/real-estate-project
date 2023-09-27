@@ -19,31 +19,33 @@ const House = (props) => {
       <div className="text-lg font-semibold max-w-[260px]">
         {post.propertyInfo.address}
       </div>
-      <div className="flex items-center text-gray-600 gap-1">
-        <div className="text-[20px] ">
-          <div>
-            <BiBed />
-          </div>
-        </div>
-        <div>{post.propertyInfo.proroom}</div>
-      </div>
 
-      <div className="flex items-center text-gray-600 gap-1">
-        <div className="text-[20px] ">
-          <div>
-            <BiBath />
+      <div className="flex flex-row ">
+        {" "}
+        <div className="flex items-center text-gray-600 gap-1 mr-2">
+          <div className="text-[20px] ">
+            <div>
+              <BiBed />
+            </div>
           </div>
+          <div>{post.propertyInfo.proroom}</div>
         </div>
-        <div>{post.propertyInfo.probath}</div>
-      </div>
-
-      <div className="flex items-center text-gray-600 gap-1">
-        <div className="text-[20px] ">
-          <div>
-            <BiArea />
+        <div className="flex items-center text-gray-600 gap-1 mr-2">
+          <div className="text-[20px] ">
+            <div>
+              <BiBath />
+            </div>
           </div>
+          <div>{post.propertyInfo.probath}</div>
         </div>
-        <div>{post.propertyInfo.sarea}</div>
+        <div className="flex items-center text-gray-600 gap-1 mr-2">
+          <div className="text-[20px] ">
+            <div>
+              <BiArea />
+            </div>
+          </div>
+          <div>{post.propertyInfo.sarea}</div>
+        </div>
       </div>
       <div className="text-lg font-semibold text-violet-600 mb-4 ">
         {post.propertyInfo.price}₵
