@@ -17,6 +17,9 @@ const Post3 = () => {
   const state = useSelector((state) => {
     return state.userReducer;
   });
+  const fname = state.userInfo.fname;
+  const lname = state.userInfo.lname;
+  const fullName = fname + " " + lname;
 
   const [disablebutton, setDisableButton] = useState(true);
   const nextPage = (e) => {
@@ -27,9 +30,11 @@ const Post3 = () => {
     }
     const date = Date().toString();
     const updatedFields = {
+      phone: state.userInfo.phone,
       userId: state.loginId,
       postId: v4(),
       dateUploaded: date,
+      fullName,
     };
     dispatch(updateOtherFields(updatedFields));
     dispatch(submitPost());

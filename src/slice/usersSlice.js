@@ -21,6 +21,8 @@ const initialState = {
     userId: "",
     postId: "",
     dateUploaded: null,
+    fullName: "",
+    phone: "",
   },
 };
 
@@ -60,8 +62,10 @@ const usersSlice = createSlice({
       state.propertyData.propertyPictures.push(joinedString);
     },
     updateOtherFields: (state, action) => {
-      const { userId, postId, dateUploaded } = action.payload;
+      const { userId, postId, dateUploaded, phone, fullName } = action.payload;
       state.propertyData.userId = userId;
+      state.propertyData.fullName = fullName;
+      state.propertyData.phone = phone;
       state.propertyData.postId = postId;
       state.propertyData.dateUploaded = dateUploaded;
     },
@@ -86,6 +90,8 @@ const usersSlice = createSlice({
         userId: "",
         postId: "",
         dateUploaded: null,
+        fullName: "",
+        phone: "",
       };
     },
     resetPropertyPost: (state) => {
@@ -104,6 +110,8 @@ const usersSlice = createSlice({
         userId: "",
         postId: "",
         dateUploaded: null,
+        fullName: "",
+        phone: "",
       };
       console.log("erased");
     },

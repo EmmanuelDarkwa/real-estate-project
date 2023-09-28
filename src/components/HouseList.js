@@ -10,6 +10,7 @@ const HouseList = () => {
     return state.userReducer;
   });
   const allPosts = state.allPosts;
+  const postId = allPosts.postId;
   const { houses, loading } = useContext(HouseContext);
   if (loading) {
     return (
@@ -25,7 +26,7 @@ const HouseList = () => {
   }
 
   return (
-    <section className="mb-20">
+    <section className="mb-5">
       <div className="container mx-auto">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-14">
           {/* {houses.map((house, index) => {
@@ -35,9 +36,17 @@ const HouseList = () => {
               </Link>
             );
           })} */}
-          {allPosts.map((post, index) => {
+
+          {allPosts.map((post) => {
             const firstImageUrl = post.propertyPictures[0];
-            return <House post={post} firstImageUrl={firstImageUrl} />;
+            return (
+              <div key={post.postId}>
+                {" "}
+                <Link to={`/property/${post.postId}`} key={post.postId}>
+                  <House post={post} firstImageUrl={firstImageUrl} />
+                </Link>
+              </div>
+            );
           })}
         </div>
       </div>

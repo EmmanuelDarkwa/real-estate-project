@@ -7,6 +7,7 @@ import { pushNewUser } from "../slice/usersSlice";
 import {
   BiAt,
   BiSolidGroup,
+  BiSolidPhone,
   BiSolidShow,
   BiSolidUser,
   BiSolidUserDetail,
@@ -17,6 +18,7 @@ const Signup = () => {
   const [lname, setLname] = useState("");
   const [userinfo, setUserinfo] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate("");
@@ -61,6 +63,7 @@ const Signup = () => {
         fname,
         lname,
         userinfo,
+        phone,
       };
       dispatch(pushNewUser(newInfo));
       navigate("/");
@@ -164,6 +167,25 @@ const Signup = () => {
 
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                 <BiAt />
+              </span>
+            </div>
+          </div>
+          <div>
+            <label className="sr-only">Phone</label>
+            <div className="relative">
+              <input
+                type="tel"
+                value={phone}
+                name="phone"
+                style={{ height: "3.3rem", border: "1px solid #718096" }}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="Phone Number"
+                className="remove w-full rounded-lg border border-slate-500 p-4 pe-12 text-sm shadow-sm"
+                required
+              />
+
+              <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                <BiSolidPhone />
               </span>
             </div>
           </div>
