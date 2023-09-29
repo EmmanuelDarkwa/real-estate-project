@@ -25,7 +25,7 @@ const PropertyDetailsCard = (props) => {
           <div>
             <button
               onClick={openModal}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-3">
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-5">
               Purchase
             </button>
             <h2 className="text-2xl font-semibold text-violet-800">

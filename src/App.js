@@ -13,6 +13,7 @@ import Forgotten from "./pages/Forgotten";
 import Post3 from "./pages/Post3";
 import { useSelector } from "react-redux";
 import PaymentPage from "./components/PaymentPage";
+import ThankYou from "./pages/ThankYou";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/post3" element={<Post3 />} />
         <Route path="/forgot-password" element={<Forgotten />} />
         <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/thank" element={<ThankYou />} />
       </Routes>
       <Footer />
     </div>

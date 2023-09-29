@@ -1,8 +1,12 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { updatePaymentAmount } from "../slice/usersSlice";
 
 const Modal = ({ isOpen, onClose, post }) => {
   const navigate = useNavigate("");
+  const price = post.propertyInfo.price;
+  const dispatch = useDispatch();
   return (
     <div
       className={`fixed inset-0 flex items-center justify-center z-50 ${
@@ -33,11 +37,10 @@ const Modal = ({ isOpen, onClose, post }) => {
             <div className="my-4">
               <p>
                 You are about to make an annual rent payment for the property
-                for ₵{post.propertyInfo.price}.00 . Making payment means you
-                have made inspections with the owner and you are okay with the
-                property. If you haven't Homeland can schedule a meeting with
-                you and the house owner to check out the property by contacting
-                us.
+                for ₵{price}.00 . Making payment means you have made inspections
+                with the owner and you are okay with the property. If you
+                haven't Homeland can schedule a meeting with you and the house
+                owner to check out the property by contacting us.
               </p>
               <p className="mt-4">
                 <a
@@ -56,6 +59,7 @@ const Modal = ({ isOpen, onClose, post }) => {
                   className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"
                   onClick={() => {
                     navigate("/payment");
+                    dispatch(updatePaymentAmount(price));
                   }}>
                   Continue to Payment
                 </button>

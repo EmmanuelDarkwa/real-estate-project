@@ -4,6 +4,7 @@ import { db } from "../firebase/firebase";
 
 const initialState = {
   userInfo: {},
+  paymentAmount: "",
   allPosts: [],
   loginId: "",
   propertyData: {
@@ -74,6 +75,7 @@ const usersSlice = createSlice({
     },
     resetState: (state) => {
       state.userInfo = {};
+      state.paymentAmount = 0;
       state.loginId = "";
       state.propertyData = {
         propertyInfo: {
@@ -93,6 +95,9 @@ const usersSlice = createSlice({
         fullName: "",
         phone: "",
       };
+    },
+    updatePaymentAmount: (state, action) => {
+      state.paymentAmount = action.payload;
     },
     resetPropertyPost: (state) => {
       state.propertyData = {
@@ -129,5 +134,6 @@ export const {
   resetState,
   updateAllPosts,
   resetPropertyPost,
+  updatePaymentAmount,
 } = usersSlice.actions;
 export default usersSlice.reducer;

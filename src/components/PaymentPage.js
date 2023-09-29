@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import { BiAt, BiSolidPhone, BiSolidUser } from "react-icons/bi";
 import { PaystackButton } from "react-paystack";
+import { useSelector } from "react-redux";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const PaymentPage = () => {
   const publicKey = "pk_test_9688edb2f206cf707b0276dac5e09819817d7e77";
-  const price = 1000;
+  //   const price = 1000;
+  const state = useSelector((state) => {
+    return state.userReducer;
+  });
+  const price = state.paymentAmount;
   const amount = price * 100;
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-
   const componentProps = {
     email,
     amount,
@@ -20,8 +26,7 @@ const PaymentPage = () => {
     },
     publicKey,
     text: "Make Payment",
-    onSuccess: () =>
-      alert("Thanks for doing business with us! Come back soon!!"),
+    onSuccess: () => navigate("/thank"),
     onClose: () => alert("Wait! Don't leave :("),
   };
   return (
@@ -31,7 +36,9 @@ const PaymentPage = () => {
           Confirm Purchase
         </h1>
         <div className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
-          <p className="text-center text-lg font-medium">GH₵ {amount}</p>
+          <p className="text-center text-lg font-medium">
+            Amount Due: GH₵ {price}
+          </p>
 
           <div>
             <label className="sr-only">Name</label>
