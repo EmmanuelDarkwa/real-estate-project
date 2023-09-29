@@ -12,6 +12,7 @@ import "./App.css";
 import Forgotten from "./pages/Forgotten";
 import Post3 from "./pages/Post3";
 import { useSelector } from "react-redux";
+import PaymentPage from "./components/PaymentPage";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/post2" element={<Post2 />} />
         <Route path="/post3" element={<Post3 />} />
         <Route path="/forgot-password" element={<Forgotten />} />
+        <Route path="/payment" element={<PaymentPage />} />
       </Routes>
       <Footer />
     </div>

@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Modal = ({ isOpen, onClose, post }) => {
+  const navigate = useNavigate("");
   return (
     <div
       className={`fixed inset-0 flex items-center justify-center z-50 ${
@@ -53,8 +55,7 @@ const Modal = ({ isOpen, onClose, post }) => {
                 <button
                   className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"
                   onClick={() => {
-                    // Handle the continue to payment logic here
-                    // e.g., redirect to a payment page or trigger a payment process
+                    navigate("/payment");
                   }}>
                   Continue to Payment
                 </button>
