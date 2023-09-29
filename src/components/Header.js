@@ -9,7 +9,7 @@ const Header = () => {
     return state.userReducer;
   });
   return (
-    <header className="py-6  border-b">
+    <header className="py-6 ">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/">
           <img src={Logo} alt="" />
